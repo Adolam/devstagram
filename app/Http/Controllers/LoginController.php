@@ -27,7 +27,7 @@ class LoginController extends Controller
         }
 
         //Si es usuario se logea correctamente será redirecconado al muro o feed
-        return redirect()->route('post.index');
+        return redirect()->route('post.index', [$request->user()->username]);
     }
 
 }

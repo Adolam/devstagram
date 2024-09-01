@@ -48,6 +48,6 @@ class RegisterController extends Controller
 
 
         //Redireccionando al muro
-        return redirect()->route('post.index');
+        return redirect()->route('post.index',[$request->user()->username]);
     }
 }

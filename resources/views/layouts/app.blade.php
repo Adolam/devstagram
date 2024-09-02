@@ -21,6 +21,10 @@
             </h1>
             @auth
                 <nav class="flex gap-2 items-center">
+                    <a href="" class="flex items-center gap-2 bg-white border p-2 text-gray-600 rounded text-sm
+                    uppercase font-bold cursor-pointer">
+                        Crear
+                    </a>
                     <a class="font-bold  text-gray-600 text-sm" href="{{ route('post.index', ['user' => auth()->user()->username])}}">
                         Hola: 
                         <span class="font-normal">{{ auth()->user()->username }}</span>

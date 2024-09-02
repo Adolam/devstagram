@@ -58,7 +58,6 @@
                     <label for="" class="text-gray-500 text-sm">
                         Mantener la sesión abierta
                     </label>
-
                 </div>
 
                 <input 

@@ -7,7 +7,10 @@
 @section('contenido')
     <div class="md:flex md:items-center">
         <div class="md:w-1/2 px-10">
-            Imagen Aquí
+            <form action="" id="dropzone" class="dropzone border-dashed border-2 w-full h-96 rounded flex flex-col 
+            justify-center items-center">
+
+            </form>
         </div>
         <div class="md:w-1/2 p-10 bg-white rounded-lg shadow-xl mt-10 md:mt-0">
             <form action="{{ route('register') }}" method="POST" novalidate>
@@ -46,6 +49,11 @@
                         </p>
                     @enderror
                 </div>
+                <input 
+                    type="submit"
+                    value="Crear Cuenta"
+                    class="bg-sky-600 hover:bg-sky-500 transition-colors cursor-pointer 
+                    uppercase font-bold w-full p-3 text-white rounded-lg">
             </form>
         </div>
     </div>

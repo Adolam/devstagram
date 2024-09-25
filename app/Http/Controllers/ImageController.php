@@ -9,6 +9,7 @@ use Intervention\Image\Drivers\Gd\Driver;
 
 class ImageController extends Controller
 {
+
     public function store(Request $request)
     {
         $imagen = $request->file('file');

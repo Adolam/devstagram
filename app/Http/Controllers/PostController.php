@@ -10,8 +10,12 @@ class PostController extends Controller
 {
     public function index(User $user)
     {
+
+        $posts = Post::where('user_id', $user->id)->paginate(20);
+
         return view('dashboard', [
-            'user'=> $user
+            'user'=> $user,
+            'posts' => $posts
         ]);
     }
 
@@ -22,20 +26,24 @@ class PostController extends Controller
 
     public function store(Request $request)
     {
+        
         $request->validate([
             'titulo' => 'required|max:255',
             'descripcion' => 'required|max:255',
-            'imagen' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'imagen' => 'required'
         ]);
     
         Post::create([
             'titulo' => $request->titulo,
             'descripcion' => $request->descripcion,
             'imagen' => $request->imagen,
-            'user_id' => auth()->user()->id,
+            'user_id' => auth()->user()->id
         ]);
     
         return redirect()->route('post.index', auth()->user()->username);
+        
+
+        // dd('Creando post');
     }
 
 }

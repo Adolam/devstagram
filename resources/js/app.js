@@ -9,7 +9,8 @@ const dropzone = new Dropzone('#dropzone', {
     dictRemoveFile: "Borrar Archivo",
     maxFiles: 1,
     uploadMultiple: false,
-
+    
+    //Función para mantener la imagen en el dropzone en caso de que la validación del formulario falle
     init: function(){
         if(document.querySelector('[name="imagen"]').value.trim()){
             const imagenPublicada = {};
@@ -17,7 +18,7 @@ const dropzone = new Dropzone('#dropzone', {
             imagenPublicada.name = document.querySelector('[name="imagen"]').value;
 
             this.options.addedfile.call(this, imagenPublicada);
-            this.options.thumbnail.call(this, imagenPublicada, '/uploads/$imagenPublicada.name');
+            this.options.thumbnail.call(this, imagenPublicada, `/uploads/${imagenPublicada.name}`);
 
             imagenPublicada.previewElement.classList.add('dz-success', 'dz-complete');
         }
@@ -29,7 +30,7 @@ dropzone.on('success', function(file, response) {
 });
 
 dropzone.on('removedfile', function() {
-    document.querySelector('[name="imagen"]').value = '';
+    document.querySelector('[name="imagen"]').value = "";
 });
 
 

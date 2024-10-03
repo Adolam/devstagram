@@ -18,10 +18,10 @@ class PostFactory extends Factory
     {
         return [
             //datos de la tabla posts
-            'titulo' => $this->faker->sentence(5),
-            'descripcion' => $this->faker->paragraph(2),
-            'imagen' => $this->faker->uuid() . '.jpg',
-            'user_id' => $this->faker->randomElement([1, 2, 3]), 
+            'titulo' => fake()->sentence(5),
+            'descripcion' => fake()->paragraph(2),
+            'imagen' => fake() ->uuid() . '.jpg',
+            'user_id' => fake()->randomElement([3, 4, 5, 6, 7]), 
         ];
     }
 }

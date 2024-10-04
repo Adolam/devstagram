@@ -46,4 +46,11 @@ class PostController extends Controller
         // dd('Creando post');
     }
 
+    public function show(User $user, Post $post)
+    {
+        return view('posts.show',[
+            'post' => $post
+        ]);
+    }
+
 }

@@ -24,6 +24,8 @@ Route::get('/posts/create', [PostController::class, 'create'])->name('post.creat
 Route::post('/posts', [PostController::class, 'store'])->name('post.store');
 Route::get('{user:username}/posts/{post}', [PostController::class, 'show'])->name('post.show');
 
+Route::delete('{user:username}/posts/{post}', [PostController::class, 'destroy'])->name('post.destroy');
+
 Route::post('{user:username}/posts/{post}', [ComentarioController::class, 'store'])->name('comentario.store');
  
 Route::post('/imagenes', [ImageController::class, 'store'])->name('imagenes.store');

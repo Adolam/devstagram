@@ -7,13 +7,13 @@ use App\Http\Controllers\ImageController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\PerfilController;
+use App\Http\Controllers\FollowerController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\ComentarioController;
 use App\Http\Controllers\ChangePasswordController;
+use App\Http\Controllers\HomeController;
 
-Route::get('/', function () {
-    return view('principal');
-});
+Route::get('/', HomeController::class)->name('home');
 
 Route::get('/register', [RegisterController::class, 'index'])->name('register');
 Route::post('/register', [RegisterController::class, 'store']);
@@ -46,3 +46,7 @@ Route::get('password/change', [ChangePasswordController::class, 'index'])->name(
 
 // Ruta para procesar el cambio de contraseña
 Route::post('password/change', [ChangePasswordController::class, 'store'])->name('password.change');
+
+//Siguiendo a otros usuarios
+Route::post('/{user:username}/follow', [FollowerController::class, 'store'])->name('users.follow');
+Route::delete('/{user:username}/unfollow', [FollowerController::class, 'destroy'])->name('users.unfollow');

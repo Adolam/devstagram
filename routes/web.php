@@ -13,7 +13,7 @@ use App\Http\Controllers\ComentarioController;
 use App\Http\Controllers\ChangePasswordController;
 use App\Http\Controllers\HomeController;
 
-Route::get('/', HomeController::class)->name('home');
+Route::get('/', HomeController::class)->name('home')->middleware('auth');
 
 Route::get('/register', [RegisterController::class, 'index'])->name('register');
 Route::post('/register', [RegisterController::class, 'store']);
@@ -48,5 +48,5 @@ Route::get('password/change', [ChangePasswordController::class, 'index'])->name(
 Route::post('password/change', [ChangePasswordController::class, 'store'])->name('password.change');
 
 //Siguiendo a otros usuarios
-Route::post('/{user:username}/follow', [FollowerController::class, 'store'])->name('users.follow');
-Route::delete('/{user:username}/unfollow', [FollowerController::class, 'destroy'])->name('users.unfollow');
+Route::post('/{user:username}/follow', [FollowerController::class, 'store'])->name('users.follow')->middleware('auth');
+Route::delete('/{user:username}/unfollow', [FollowerController::class, 'destroy'])->name('users.unfollow')->middleware('auth');
